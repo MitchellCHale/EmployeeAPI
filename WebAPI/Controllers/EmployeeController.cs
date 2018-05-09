@@ -7,6 +7,7 @@ using WebAPI.Models;
 
 namespace WebApiSampleProject.Controllers
 {
+  [RoutePrefix("employee")]
   public class EmployeeController : ApiController
   {
     private readonly IList<Employee> _employees = new List<Employee>()
@@ -32,11 +33,15 @@ namespace WebApiSampleProject.Controllers
         EmployeeId = 5, EmployeeName = "Manish Sharma", Address = "New Delhi", Department = "HR"
       },
     };
+    [Route("all")]
+    [HttpGet]
     public IList<Employee> GetAllEmployees()
     {
       //Return list of all employees  
       return _employees;
     }
+    [Route("details")]
+    [HttpGet]
     public Employee GetEmployeeDetails(int id)
     {
       //Return a single employee detail  
